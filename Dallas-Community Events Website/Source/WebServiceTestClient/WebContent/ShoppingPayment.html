@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Make Payment</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="jquery-1.11.0.js"></script>
+<script src="simpleCart.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!-- <script type="text/javascript" src="js/jquery.min.js"></script>  -->
+   <script type="text/javascript" src="js/jquery.easing.min.js"></script> 
+  <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script> 
+  <script type="text/javascript">
+    
+  </script> 
+<script>
+$( document ).ready(function() {
+    $("#paymentDetails").hide();
+    $("#makePayment").click(function(){
+    	var a = $("#total").val();
+    	//alert(a);
+    	if(a == 0 ){
+    		alert("Please select items in cart!!");
+    		$("#cart").show();
+            $("#paymentDetails").hide();
+    	}
+    	else{
+    		$("#cart").hide();
+            $("#paymentDetails").show();
+    	}
+        
+    });
+    $("#editcart").click(function(){
+        $("#cart").show();
+        $("#paymentDetails").hide();
+    });
+    
+    $('#country').change(function(event) {  
+        var $country=$("select#country").val();
+        //alert/("hi");
+           $.get('ActionServlet',{countryname:$country},function(responseJson) {   
+            //alert(responseJson);
+        	   var $select = $('#state');   
+        	   //alert($select);
+               $select.find('option').remove();                          
+               $.each(responseJson, function(key, value) {   
+            	   //alert(key + " " + value);
+                   $('<option>').val(key).text(value).appendTo($select);      
+                    });
+            });
+        });
+    
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+
+    //$('#submit').click(function(){
+    //	alert ("Your transaction number is : ");
+    //	$.get('ShoppingCart',{countryname:$country},function(responseStr) {
+    //		alert ("Your transaction number is : " + responseStr);
+    //	});
+    //});
+});
+</script>
+<script >
+function addCart(price, quantityTag, subTotalTag,finaQuan){
+	
+	if(document.getElementById(quantityTag).value < 0){
+		document.getElementById(quantityTag).value = 0;
+		alert(document.getElementById(quantityTag).value = 0);
+	}
+	var subtot = document.getElementById(subTotalTag).value;
+	document.getElementById("total").value = parseFloat(document.getElementById("total").value) - parseFloat(subtot);
+	var TotalQuant = document.getElementById(finaQuan).value;
+	var Quantity = document.getElementById(quantityTag).value;
+	var x = Quantity * price;
+	document.getElementById(subTotalTag).value= parseFloat(document.getElementById(subTotalTag).value)+parseFloat(x);
+	document.getElementById(finaQuan).value = parseInt(document.getElementById(finaQuan).value) + parseInt(Quantity);
+	var subtot = document.getElementById(subTotalTag).value;
+	document.getElementById("total").value = parseFloat(document.getElementById("total").value) + parseFloat(subtot);
+	document.getElementById("printtot").innerHTML="Toal is $" + document.getElementById("total").value;
+}
+function updateCart(price,subTotalTag,finaQuan1){
+	if(document.getElementById(finaQuan1).value < 0){
+		document.getElementById(finaQuan1).value = 0;
+	}
+	var subtot = document.getElementById(subTotalTag).value;
+	document.getElementById("total").value = parseFloat(document.getElementById("total").value) - parseFloat(subtot);
+	var Quantity= document.getElementById(finaQuan1).value;
+	var x = Quantity * price;
+	document.getElementById(subTotalTag).value= parseFloat(x);
+	var subtot = document.getElementById(subTotalTag).value;
+	document.getElementById("total").value = parseFloat(document.getElementById("total").value) + parseFloat(subtot);
+	document.getElementById("printtot").innerHTML="Toal is $" + document.getElementById("total").value;
+}
+
+</script>
+<script>
+function validate()
+{
+	var country = document.getElementById("country").value;
+	
+	var state = document.getElementById("state").value;
+	var city = document.getElementById("city").value;
+	var addressline1 = document.getElementById("addressline1").value;
+	var fname = document.getElementById("firstname").value;
+	var lname = document.getElementById("lastname").value;
+	var cardno = document.getElementById("cardno").value;
+	var securityno = document.getElementById("securityno").value;
+	var expirymonth = document.getElementById("expirymonth").value;
+	var expiryyear = document.getElementById("expiryyear").value;
+	
+	// Check if any field is empty
+	if(fname == null || fname ==""){
+		alert("First name cannot be empty.");
+	   document.getElementById("firstname").style.borderColor = "#E34234";
+	   document.getElementById("firstname").focus();
+	   return false; 
+	}
+	if(lname == null || lname ==""){
+		alert("Last name cannot be empty.");
+	   document.getElementById("lastname").style.borderColor = "#E34234";
+	   document.getElementById("lastname").focus();
+	   return false; 
+	}
+	if(country == null || country ==""){
+		alert("Country cannot be empty.");
+	   document.getElementById("country").style.borderColor = "#E34234";
+	   document.getElementById("country").focus();
+	   return false; 
+	}
+	if(state == null || state ==""){
+		alert("State cannot be empty.");
+	   document.getElementById("state").style.borderColor = "#E34234";
+	   document.getElementById("state").focus();
+	   return false; 
+	}
+	if(city == null || city ==""){
+		alert("City cannot be empty.");
+	   document.getElementById("city").style.borderColor = "#E34234";
+	   document.getElementById("city").focus();
+	   return false; 
+	}
+	if(addressline1 == null || addressline1 ==""){
+		alert("Address Line 1 cannot be empty.");
+	   document.getElementById("addressline1").style.borderColor = "#E34234";
+	   document.getElementById("addressline1").focus();
+	   return false; 
+	}
+	if(cardno == null || cardno ==""){
+		alert("Card No cannot be empty.");
+	   document.getElementById("cardno").style.borderColor = "#E34234";
+	   document.getElementById("cardno").focus();
+	   return false; 
+	}
+	if(securityno == null || securityno ==""){
+		alert("CVV Number cannot be empty.");
+	   document.getElementById("securityno").style.borderColor = "#E34234";
+	   document.getElementById("securityno").focus();
+	   return false; 
+	}
+	if(expirymonth == null || expirymonth ==""){
+		alert("Expiry Month cannot be empty.");
+	   document.getElementById("expirymonth").style.borderColor = "#E34234";
+	   document.getElementById("expirymonth").focus();
+	   return false; 
+	}
+	if(expiryyear == null || expiryyear ==""){
+		alert("Expiry Year cannot be empty.");
+	   document.getElementById("expiryyear").style.borderColor = "#E34234";
+	   document.getElementById("expiryyear").focus();
+	   return false; 
+	}
+	if(expiryyear.length != 4){
+		alert("Invalid Year. Year should consist of 4 digits");
+	   document.getElementById("expiryyear").style.borderColor = "#E34234";
+	   document.getElementById("expiryyear").focus();
+	   return false; 
+	}
+	if(expirymonth.length != 2){
+		alert("Invalid Month. Month should consist of 2 digits");
+	   document.getElementById("expirymonth").style.borderColor = "#E34234";
+	   document.getElementById("expirymonth").focus();
+	   return false; 
+	}
+	if(cardno.length != 16){
+		alert("Invalid Card Number.");
+	   document.getElementById("cardno").style.borderColor = "#E34234";
+	   document.getElementById("cardno").focus();
+	   return false; 
+	}
+	if(securityno.length != 3){
+		alert("Invalid CVV Number.");
+	   document.getElementById("securityno").style.borderColor = "#E34234";
+	   document.getElementById("securityno").focus();
+	   return false; 
+	}
+	
+}
+</script>
+</head>
+<body bgcolor="#f0f0f0">
+  
+  <div id="main">
+
+	<div id="menubar">
+	  <div id="welcome">
+	    <h1>Dallas Community Events</h1>
+	  </div><!--close welcome-->
+      <div id="menu_items">
+	    <ul id="menu">
+          <li class="current"><a href="index.html">Home</a></li>
+          <li><a href="LoginServlet">Event Registration</a></li>
+          <li><a href="Login.html">Login</a></li>
+          <li><a href="SubscribeNow.html">Get Membership</a></li>
+          <li><a href="index.html">Log Out</a></li>
+        </ul>
+      </div><!--close menu-->
+    </div><!--close menubar-->	
+    
+	<div id="site_content">		
+
+	  <div id="banner_image">
+	    <div id="slider-wrapper">        
+          <div id="slider" class="nivoSlider">
+            <img src="images/home_3.jpg" alt="" width="400" />
+            <img src="images/home_4.jpg" alt="" />
+		  </div><!--close slider-->
+		</div><!--close slider_wrapper-->
+	  </div><!--close banner_image-->	
+
+	  <div class="sidebar_container">       
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Dallas Communities</h2>
+            <p>Welcome to our new website. Get connected to your community in our Country! Have a look around!</p>
+          </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->     		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Latest Update</h2>
+            
+            <p></p>         
+		  </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->
+		<div class="sidebar">
+          <div class="sidebar_item">
+           <!-- <h3>January 2013</h3> -->
+            <p></p>         
+		  </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->  		
+      </div><!--close sidebar_container-->		  
+<!-- --------  --> 
+		<form onsubmit="return validate()" method="POST" action="ShoppingCart">
+		<table id="cart">
+		<tr>
+			<td><div><img src="images/texas-brown.gif" height="200" width="200"></div><div align="justify"><p align="justify">T-Shirts</p></div><div><input type="number" value="1" class="item_Quantity" id="q1">&nbsp;&nbsp;$15.99&nbsp;&nbsp;<input type="button" value="Add to Cart" id="add1" onClick="javascript:addCart(15.99, 'q1','sub1','quantity1');"> </div></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td valign="bottom">Quantity&nbsp;&nbsp; <input type="number" value="0"  name="quantity1" id="quantity1" onChange="updateCart(15.99,'sub1','quantity1')"> </br> Subtotal &nbsp;&nbsp;$<input type="text" value="0"  name="sub1" id="sub1" readonly ></td>
+		</tr>
+		<tr>
+			<td><div><img src="images/Cap.jpg" height="200" width="200"></div><div align="justify"><p align="justify">Caps</p></div><div><input type="number" value="1" class="item_Quantity" id="q2">&nbsp;&nbsp;$5.99&nbsp;&nbsp;<input type="button" id="add2" value="Add to Cart" onClick="javascript:addCart(5.99, 'q2','sub2','quantity2');"></div></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td valign="bottom">Quantity&nbsp;&nbsp; <input type="number" value="0" name="quantity2" id="quantity2" onChange="updateCart(5.99,'sub2','quantity2')"> </br> Subtotal &nbsp;&nbsp;$<input type="text" value="0" name="sub2" id="sub2"  readonly></td>
+		</tr>
+		<tr>
+			<td><div><img src="images/restaurant-coupons.gif" height="200" width="200"></div><div align="justify"><p align="justify">Discount Coupons</p></div><div><input type="number" value="1" class="item_Quantity" id="q3">&nbsp;&nbsp;$49.99&nbsp;&nbsp;<input type="button" value="Add to Cart" id="add3" onClick="javascript:addCart(49.99, 'q3','sub3','quantity3');"> </div></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td valign="bottom">Quantity&nbsp;&nbsp; <input type="number" value="0" name="quantity3" id="quantity3" onChange="updateCart(49.99,'sub3','quantity3')"> </br> Subtotal &nbsp;&nbsp;$<input type="text" value="0" name="sub3" id="sub3" readonly ></td>
+		</tr>
+		<tr>
+			<td colspan="3"> &nbsp;</td>
+			
+		</tr>
+		<tr>
+			<td colspan="3"> &nbsp;</td>
+			
+		</tr>
+		
+		<tr>
+			<td> <h1> Total</h1> </td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td align="right"> $<input type="text" value="0" id="total" name="total" readonly></td>
+		</tr>
+		<tr>
+			<td colspan="3" align="center" id="makePayment"> <input type="button" value="Make Payment"></td>
+		</tr>
+		</table>
+		
+		 
+		 <table align='center'  id="paymentDetails">
+		 <tr><td colspan='2'> <h2><b>Enter Shipping address</b> </h2></td><td>&nbsp;&nbsp;&nbsp;</td><td colspan='2'> <h2><b>Enter Payment Details</b></h2> </td></tr>
+		 <tr><td> First Name : </td> <td> <input type="text" name='firstname' id='firstname'></td><td>&nbsp;&nbsp;&nbsp;</td><td> Type : </td> <td> <select id="type" name="type"> <option> Visa Card </option> <option>Master Card</option></select></td></tr>
+		 <tr><td> Last Name : </td> <td> <input type="text" name='lastname' id='lastname'></td><td>&nbsp;&nbsp;&nbsp;</td><td> Card No. : </td> <td> <input type="number" name='cardno' id='cardno'></td></tr>
+		 <tr><td> Country : </td> <td> <select id="country" name="country"><option>Select Country</option><option value="India">India</option><option value="US">US</option></select></td><td>&nbsp;&nbsp;&nbsp;</td><td> CVV No. : </td> <td> <input type="number" name='securityno' id='securityno'></td></tr>
+		 <tr><td> State : </td> <td> <select id="state" name="state"><option>Select State</option></select></td><td>&nbsp;&nbsp;&nbsp;</td><td> Expiry Month : </td> <td> <input type="number" name='expirymonth' id='expirymonth'></td></tr>
+		 <tr><td> City : </td> <td> <input type="text" name='city' id='city'></td><td>&nbsp;&nbsp;&nbsp;</td><td> Expiry Year : </td> <td> <input type="number" name='expiryyear' id='expiryyear'></td></tr>
+		 <tr><td> Address Line 1 : </td> <td> <input type="text" name='addressline1' id='addressline1'></td><td colspan='3'>&nbsp;&nbsp;&nbsp;</td></tr>
+		 <tr><td> Address Line 2 : </td> <td> <input type="text" name='addressline2' id='addressline2'></td><td colspan='3'>&nbsp;&nbsp;&nbsp;</td></tr>
+		 <tr><td align="center" colspan="5"> <h1 id="printtot"> </h1></td></tr>
+		 <tr><td colspan ='2' align = 'center'><input type="button" value="Edit Cart" id="editcart"></td> <td>&nbsp;&nbsp;&nbsp;</td> <td colspan ='2' align = "center"><input type="submit" value="Submit" id="submit"></td></tr>
+		 </table></form>
+<!-- ------------ -->
+<div id="content_blue">
+	    <div class="content_blue_container_box">
+		  <h4>Latest Blog Post</h4>
+	      <p>Some articles from the top leaders of these communities! Get to know about their experience with their communities</p>
+		  <div class="readmore">
+		    <a href="#">Read more</a>
+		  </div><!--close readmore-->
+	    </div><!--close content_blue_container_box-->
+        <div class="content_blue_container_box">
+         <h4>Latest News</h4>
+	      <p>Scheduled events, parties and a lot more! Subscribe for a newsletter and dont miss a single thing! </p>
+	      <div class="readmore">
+		    <a href="#">Read more</a>
+		  </div><!--close readmore-->
+	    </div><!--close content_blue_container_box-->
+        <div class="content_blue_container_boxl">
+		  <h4>Offers and Coupons</h4>
+	      <p>Get discounts on your community events and online shop. Be a member and enjoy the offers </p>
+	      <div class="readmore">
+		    <a href="#">Read more</a>
+		  </div><!--close readmore-->	  
+	   <!-- </div><!--close content_blue_container_box1-->      
+	    <br style="clear:both"/>
+      </div><!--close content_blue--> 	
+	</div><!--close site_content--> 
+  
+  </div><!--close main--> 
+ 
+ </body>
+ </html>

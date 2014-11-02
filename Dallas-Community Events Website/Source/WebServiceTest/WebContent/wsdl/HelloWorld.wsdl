@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webTest" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webTest" xmlns:intf="http://webTest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webTest" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="decrypt">
+    <complexType>
+     <sequence>
+      <element name="strToDecrypt" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="decryptResponse">
+    <complexType>
+     <sequence>
+      <element name="decryptReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertLoginData">
+    <complexType>
+     <sequence>
+      <element name="user" type="xsd:string"/>
+      <element name="pwd" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertLoginDataResponse">
+    <complexType>
+     <sequence>
+      <element name="insertLoginDataReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertHostEventData">
+    <complexType>
+     <sequence>
+      <element name="eventName" type="xsd:string"/>
+      <element name="eventDesc" type="xsd:string"/>
+      <element name="eventVenue" type="xsd:string"/>
+      <element name="eventDate" type="xsd:string"/>
+      <element name="eventTime" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertHostEventDataResponse">
+    <complexType/>
+   </element>
+   <element name="sayHello">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sayHelloResponse">
+    <complexType>
+     <sequence>
+      <element name="sayHelloReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sendEmail">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+      <element name="eventName" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sendEmailResponse">
+    <complexType/>
+   </element>
+   <element name="getEventsData">
+    <complexType/>
+   </element>
+   <element name="getEventsDataResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getEventsDataReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateRegistrationData">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="eventName" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateRegistrationDataResponse">
+    <complexType/>
+   </element>
+   <element name="insertRegisterData">
+    <complexType>
+     <sequence>
+      <element name="user" type="xsd:string"/>
+      <element name="pwd" type="xsd:string"/>
+      <element name="address" type="xsd:string"/>
+      <element name="email" type="xsd:string"/>
+      <element name="contact" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="eventName" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+      <element name="note" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertRegisterDataResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="sendEmailResponse">
+
+      <wsdl:part element="impl:sendEmailResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertLoginDataResponse">
+
+      <wsdl:part element="impl:insertLoginDataResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sayHelloResponse">
+
+      <wsdl:part element="impl:sayHelloResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEventsDataRequest">
+
+      <wsdl:part element="impl:getEventsData" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertRegisterDataResponse">
+
+      <wsdl:part element="impl:insertRegisterDataResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="decryptRequest">
+
+      <wsdl:part element="impl:decrypt" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertHostEventDataRequest">
+
+      <wsdl:part element="impl:insertHostEventData" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertLoginDataRequest">
+
+      <wsdl:part element="impl:insertLoginData" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertRegisterDataRequest">
+
+      <wsdl:part element="impl:insertRegisterData" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sendEmailRequest">
+
+      <wsdl:part element="impl:sendEmail" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sayHelloRequest">
+
+      <wsdl:part element="impl:sayHello" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="decryptResponse">
+
+      <wsdl:part element="impl:decryptResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateRegistrationDataResponse">
+
+      <wsdl:part element="impl:updateRegistrationDataResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateRegistrationDataRequest">
+
+      <wsdl:part element="impl:updateRegistrationData" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEventsDataResponse">
+
+      <wsdl:part element="impl:getEventsDataResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertHostEventDataResponse">
+
+      <wsdl:part element="impl:insertHostEventDataResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="HelloWorld">
+
+      <wsdl:operation name="decrypt">
+
+         <wsdl:input message="impl:decryptRequest" name="decryptRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:decryptResponse" name="decryptResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertLoginData">
+
+         <wsdl:input message="impl:insertLoginDataRequest" name="insertLoginDataRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertLoginDataResponse" name="insertLoginDataResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertHostEventData">
+
+         <wsdl:input message="impl:insertHostEventDataRequest" name="insertHostEventDataRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertHostEventDataResponse" name="insertHostEventDataResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sayHello">
+
+         <wsdl:input message="impl:sayHelloRequest" name="sayHelloRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:sayHelloResponse" name="sayHelloResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sendEmail">
+
+         <wsdl:input message="impl:sendEmailRequest" name="sendEmailRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:sendEmailResponse" name="sendEmailResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEventsData">
+
+         <wsdl:input message="impl:getEventsDataRequest" name="getEventsDataRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getEventsDataResponse" name="getEventsDataResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateRegistrationData">
+
+         <wsdl:input message="impl:updateRegistrationDataRequest" name="updateRegistrationDataRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateRegistrationDataResponse" name="updateRegistrationDataResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertRegisterData">
+
+         <wsdl:input message="impl:insertRegisterDataRequest" name="insertRegisterDataRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertRegisterDataResponse" name="insertRegisterDataResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="HelloWorldSoapBinding" type="impl:HelloWorld">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="decrypt">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="decryptRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="decryptResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertLoginData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertLoginDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertLoginDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertHostEventData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertHostEventDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertHostEventDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sayHello">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sayHelloRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sayHelloResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sendEmail">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sendEmailRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sendEmailResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEventsData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getEventsDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getEventsDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateRegistrationData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateRegistrationDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateRegistrationDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertRegisterData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertRegisterDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertRegisterDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="HelloWorldService">
+
+      <wsdl:port binding="impl:HelloWorldSoapBinding" name="HelloWorld">
+
+         <wsdlsoap:address location="http://localhost:8080/WebServiceTest/services/HelloWorld"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

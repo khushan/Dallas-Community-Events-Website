@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from HelloWorldService WSDL service -->
+
+  <service name="HelloWorld" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webTest"/>
+      <parameter name="wsdlServiceElement" value="HelloWorldService"/>
+      <parameter name="schemaQualified" value="http://webTest"/>
+      <parameter name="wsdlServicePort" value="HelloWorld"/>
+      <parameter name="className" value="webTest.HelloWorld"/>
+      <parameter name="wsdlPortType" value="HelloWorld"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://webTest" xmlns:retNS="http://webTest" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="decrypt" qname="operNS:decrypt" returnQName="retNS:decryptReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:strToDecrypt" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" xmlns:retNS="http://webTest" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="insertLoginData" qname="operNS:insertLoginData" returnQName="retNS:insertLoginDataReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:user" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pwd" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" name="insertHostEventData" qname="operNS:insertHostEventData" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:eventName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:eventDesc" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:eventVenue" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:eventDate" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:eventTime" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" xmlns:retNS="http://webTest" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="sayHello" qname="operNS:sayHello" returnQName="retNS:sayHelloReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" name="sendEmail" qname="operNS:sendEmail" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:eventName" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" xmlns:retNS="http://webTest" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getEventsData" qname="operNS:getEventsData" returnQName="retNS:getEventsDataReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://webTest" name="updateRegistrationData" qname="operNS:updateRegistrationData" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:eventName" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" name="insertRegisterData" qname="operNS:insertRegisterData" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:user" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pwd" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:address" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:contact" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:eventName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:date" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:note" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="insertHostEventData insertRegisterData decrypt updateRegistrationData sendEmail insertLoginData getEventsData sayHello"/>
+
+  </service>
+</deployment>

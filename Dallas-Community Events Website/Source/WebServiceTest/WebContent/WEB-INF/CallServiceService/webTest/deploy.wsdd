@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CallServiceService WSDL service -->
+
+  <service name="CallService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webTest"/>
+      <parameter name="wsdlServiceElement" value="CallServiceService"/>
+      <parameter name="schemaQualified" value="http://webTest"/>
+      <parameter name="wsdlServicePort" value="CallService"/>
+      <parameter name="className" value="webTest.CallService"/>
+      <parameter name="wsdlPortType" value="CallService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://webTest" name="main" qname="operNS:main" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:args" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" xmlns:retNS="http://webTest" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="hello" qname="operNS:hello" returnQName="retNS:helloReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" xmlns:retNS="http://webTest" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="signUp" qname="operNS:signUp" returnQName="retNS:signUpReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:firstName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:lastName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" xmlns:retNS="http://webTest" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="ajaxCall" qname="operNS:ajaxCall" returnQName="retNS:ajaxCallReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:country" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" xmlns:retNS="http://webTest" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="fetchPickupDetails" qname="operNS:fetchPickupDetails" returnQName="retNS:fetchPickupDetailsReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://webTest" xmlns:retNS="http://webTest" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addCartDetails" qname="operNS:addCartDetails" returnQName="retNS:addCartDetailsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id1" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:q1" type="tns:int"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subTot1" type="tns:float"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id2" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:q2" type="tns:int"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subTot2" type="tns:float"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id3" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:q3" type="tns:int"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subTot3" type="tns:float"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:total" type="tns:float"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:firstName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:lastName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:country" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:state" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:city" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:address1" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:address2" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:cardType" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:cardNo" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:securityNo" type="tns:int"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:expiryMonth" type="tns:int"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:expiryYear" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" xmlns:retNS="http://webTest" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="insertPickupDetails" qname="operNS:insertPickupDetails" returnQName="retNS:insertPickupDetailsReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:firstName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:lastName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:state" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:city" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:address1" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:address2" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:datetime" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:contact" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:message" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webTest" xmlns:retNS="http://webTest" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addSubscriptionDetails" qname="operNS:addSubscriptionDetails" returnQName="retNS:addSubscriptionDetailsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id1" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:q1" type="tns:int"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subTot1" type="tns:float"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id2" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:q2" type="tns:int"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:subTot2" type="tns:float"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:total" type="tns:float"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:firstName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:lastName" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:country" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:state" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:city" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:address1" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:address2" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:cardType" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:cardNo" type="tns:string"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:securityNo" type="tns:int"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:expiryMonth" type="tns:int"/>
+        <parameter xmlns:pns="http://webTest" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:expiryYear" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="insertPickupDetails hello signUp addCartDetails ajaxCall addSubscriptionDetails fetchPickupDetails main"/>
+
+  </service>
+</deployment>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+  <title>Register Events</title>
+  <meta name="description" content="free website template" />
+  <meta name="keywords" content="enter your keywords here" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+  <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+  <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+  </script> 
+</head>
+
+<body>
+
+  <div id="main">
+	
+	<div id="menubar">
+	  <div id="welcome">
+	    <h1><a href="#">Dallas Community Events</a></h1>
+	  </div><!--close welcome-->
+      <div id="menu_items">
+	    <ul id="menu">
+           <li><a href="index.html">Home</a></li>
+          <li  class="current"><a href="LoginServlet">Event Registration</a></li>
+          <li><a href="HostEventServlet">Host Event</a></li>
+          <li><a href="viewPickupRequest">View Pick up Details</a></li>
+          <li><a href="PickupService.html">Apply for Pick up</a></li>
+          <li><a href="ShoppingPayment.html">Online shop</a></li>
+          <li><a href="SubscribeNow.html">Get Membership</a></li>
+          <li><a href="index.html">Log Out</a></li>
+        </ul>
+
+      </div><!--close menu-->
+    </div><!--close menubar-->	
+    
+	<div id="site_content">	
+
+	  <div id="banner_image">
+	    <div id="slider-wrapper">        
+          <div id="slider" class="nivoSlider">
+            <img src="images/home_6.jpg" alt="" />
+            <img src="images/home_2.jpg" alt="" />
+		  </div><!--close slider-->
+		</div><!--close slider_wrapper-->
+	  </div><!--close banner_image-->	
+
+	  <div class="sidebar_container">       
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Dallas Communities</h2>
+            <p>Welcome to our new website. Get connected to your community in our Country! Have a look around!</p>
+          </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->     		
+		<div class="sidebar">
+          <div class="sidebar_item">
+             <h2>Latest Update</h2>
+            
+            <p></p>          
+		  </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->
+		<div class="sidebar">
+          <div class="sidebar_item">
+                    
+		  </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->  		
+      </div><!--close sidebar_container-->		    
+        
+	  <div id="content">
+        <div class="content_item">
+          <h2>Enter your credentials : </h2>
+		  <p id="p1">
+			<form action="LoginServlet" method="POST">
+					Username: <input type="text" name="first_name"><br><br>
+					Password: <input type="password" name="password"><br><br>
+					
+					<input type="submit">
+			</form>
+		  </p>
+			
+		   
+            				
+		</div><!--close content_item-->
+      </div><!--close content-->   
+      
+      <div id="content">
+      <div class="content_item">
+      <p id=p1>
+      <form action="HostEventServlet" method="POST">
+      <a>If you want to Host Event Click here...</a>
+      </form>
+      </p>
+      </div>
+      </div>
+	  
+	 <div id="content_blue">
+	    <div class="content_blue_container_box">
+		  <h4>Latest Blog Post</h4>
+	      <p>Some articles from the top leaders of these communities! Get to know about their experience with their communities</p>
+		  <div class="readmore">
+		    <a href="#">Read more</a>
+		  </div><!--close readmore-->
+	    </div><!--close content_blue_container_box-->
+        <div class="content_blue_container_box">
+         <h4>Latest News</h4>
+	      <p>Scheduled events, parties and a lot more! Subscribe for a newsletter and dont miss a single thing! </p>
+	      <div class="readmore">
+		    <a href="#">Read more</a>
+		  </div><!--close readmore-->
+	    </div><!--close content_blue_container_box-->
+        <div class="content_blue_container_boxl">
+		  <h4>Offers and Coupons</h4>
+	      <p>Get discounts on your community events and online shop. Be a member and enjoy the offers </p>
+	      <div class="readmore">
+		    <a href="#">Read more</a>
+		  </div><!--close readmore-->	  
+	   <!-- </div><!--close content_blue_container_box1-->      
+	    <br style="clear:both"/>
+      </div><!--close content_blue--> 		
+	</div><!--close site_content--> 
+ 
+  </div><!--close main-->
+  
+  <div id="footer">
+	  <a href="http://validator.w3.org/check?uri=referer">Valid XHTML</a> | <a href="http://fotogrph.com/">Images</a> | <a href="http://www.heartinternet.co.uk/web-hosting/">Web Hosting</a> | website template by <a href="http://www.araynordesign.co.uk">ARaynorDesign</a>
+  </div><!--close footer-->  
+  
+
+</body>
+</html>

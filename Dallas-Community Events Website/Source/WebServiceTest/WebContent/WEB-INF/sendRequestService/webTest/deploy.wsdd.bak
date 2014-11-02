@@ -1,0 +1,40 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from sendRequestService WSDL service -->
+
+  <service name="sendRequest" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webTest"/>
+      <parameter name="wsdlServiceElement" value="sendRequestService"/>
+      <parameter name="schemaQualified" value="http://webTest"/>
+      <parameter name="wsdlServicePort" value="sendRequest"/>
+      <parameter name="className" value="webTest.SendRequestSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="sendRequest"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="decrypt" qname="operNS:decrypt" xmlns:operNS="http://webTest" returnQName="retNS:decryptReturn" xmlns:retNS="http://webTest" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:strToDecrypt" xmlns:pns="http://webTest" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="encrypt" qname="operNS:encrypt" xmlns:operNS="http://webTest" returnQName="retNS:encryptReturn" xmlns:retNS="http://webTest" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:strToEncrypt" xmlns:pns="http://webTest" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="acceptRequest" qname="operNS:acceptRequest" xmlns:operNS="http://webTest" returnQName="retNS:acceptRequestReturn" xmlns:retNS="http://webTest" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:name" xmlns:pns="http://webTest" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:address" xmlns:pns="http://webTest" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:contact" xmlns:pns="http://webTest" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:email" xmlns:pns="http://webTest" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:username" xmlns:pns="http://webTest" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://webTest" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="acceptRequest decrypt encrypt"/>
+
+  </service>
+</deployment>

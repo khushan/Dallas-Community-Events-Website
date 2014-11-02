@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webTest" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webTest" xmlns:intf="http://webTest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webTest" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="main">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="args" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="mainResponse">
+    <complexType/>
+   </element>
+   <element name="hello">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="helloResponse">
+    <complexType>
+     <sequence>
+      <element name="helloReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signUp">
+    <complexType>
+     <sequence>
+      <element name="firstName" type="xsd:string"/>
+      <element name="lastName" type="xsd:string"/>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signUpResponse">
+    <complexType>
+     <sequence>
+      <element name="signUpReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ajaxCall">
+    <complexType>
+     <sequence>
+      <element name="country" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ajaxCallResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="ajaxCallReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fetchPickupDetails">
+    <complexType/>
+   </element>
+   <element name="fetchPickupDetailsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="fetchPickupDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCartDetails">
+    <complexType>
+     <sequence>
+      <element name="id1" type="xsd:string"/>
+      <element name="q1" type="xsd:int"/>
+      <element name="subTot1" type="xsd:float"/>
+      <element name="id2" type="xsd:string"/>
+      <element name="q2" type="xsd:int"/>
+      <element name="subTot2" type="xsd:float"/>
+      <element name="id3" type="xsd:string"/>
+      <element name="q3" type="xsd:int"/>
+      <element name="subTot3" type="xsd:float"/>
+      <element name="total" type="xsd:float"/>
+      <element name="firstName" type="xsd:string"/>
+      <element name="lastName" type="xsd:string"/>
+      <element name="country" type="xsd:string"/>
+      <element name="state" type="xsd:string"/>
+      <element name="city" type="xsd:string"/>
+      <element name="address1" type="xsd:string"/>
+      <element name="address2" type="xsd:string"/>
+      <element name="cardType" type="xsd:string"/>
+      <element name="cardNo" type="xsd:string"/>
+      <element name="securityNo" type="xsd:int"/>
+      <element name="expiryMonth" type="xsd:int"/>
+      <element name="expiryYear" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCartDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="addCartDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertPickupDetails">
+    <complexType>
+     <sequence>
+      <element name="firstName" type="xsd:string"/>
+      <element name="lastName" type="xsd:string"/>
+      <element name="state" type="xsd:string"/>
+      <element name="city" type="xsd:string"/>
+      <element name="address1" type="xsd:string"/>
+      <element name="address2" type="xsd:string"/>
+      <element name="datetime" type="xsd:string"/>
+      <element name="contact" type="xsd:string"/>
+      <element name="message" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertPickupDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="insertPickupDetailsReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addSubscriptionDetails">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="id1" type="xsd:string"/>
+      <element name="q1" type="xsd:int"/>
+      <element name="subTot1" type="xsd:float"/>
+      <element name="id2" type="xsd:string"/>
+      <element name="q2" type="xsd:int"/>
+      <element name="subTot2" type="xsd:float"/>
+      <element name="total" type="xsd:float"/>
+      <element name="firstName" type="xsd:string"/>
+      <element name="lastName" type="xsd:string"/>
+      <element name="country" type="xsd:string"/>
+      <element name="state" type="xsd:string"/>
+      <element name="city" type="xsd:string"/>
+      <element name="address1" type="xsd:string"/>
+      <element name="address2" type="xsd:string"/>
+      <element name="cardType" type="xsd:string"/>
+      <element name="cardNo" type="xsd:string"/>
+      <element name="securityNo" type="xsd:int"/>
+      <element name="expiryMonth" type="xsd:int"/>
+      <element name="expiryYear" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addSubscriptionDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="addSubscriptionDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="helloResponse">
+
+      <wsdl:part element="impl:helloResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fetchPickupDetailsResponse">
+
+      <wsdl:part element="impl:fetchPickupDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="helloRequest">
+
+      <wsdl:part element="impl:hello" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fetchPickupDetailsRequest">
+
+      <wsdl:part element="impl:fetchPickupDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCartDetailsRequest">
+
+      <wsdl:part element="impl:addCartDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addSubscriptionDetailsResponse">
+
+      <wsdl:part element="impl:addSubscriptionDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="mainRequest">
+
+      <wsdl:part element="impl:main" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signUpResponse">
+
+      <wsdl:part element="impl:signUpResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajaxCallResponse">
+
+      <wsdl:part element="impl:ajaxCallResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertPickupDetailsResponse">
+
+      <wsdl:part element="impl:insertPickupDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signUpRequest">
+
+      <wsdl:part element="impl:signUp" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertPickupDetailsRequest">
+
+      <wsdl:part element="impl:insertPickupDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajaxCallRequest">
+
+      <wsdl:part element="impl:ajaxCall" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCartDetailsResponse">
+
+      <wsdl:part element="impl:addCartDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addSubscriptionDetailsRequest">
+
+      <wsdl:part element="impl:addSubscriptionDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="mainResponse">
+
+      <wsdl:part element="impl:mainResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CallService">
+
+      <wsdl:operation name="main">
+
+         <wsdl:input message="impl:mainRequest" name="mainRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:mainResponse" name="mainResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="hello">
+
+         <wsdl:input message="impl:helloRequest" name="helloRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:helloResponse" name="helloResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signUp">
+
+         <wsdl:input message="impl:signUpRequest" name="signUpRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:signUpResponse" name="signUpResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ajaxCall">
+
+         <wsdl:input message="impl:ajaxCallRequest" name="ajaxCallRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ajaxCallResponse" name="ajaxCallResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="fetchPickupDetails">
+
+         <wsdl:input message="impl:fetchPickupDetailsRequest" name="fetchPickupDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:fetchPickupDetailsResponse" name="fetchPickupDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCartDetails">
+
+         <wsdl:input message="impl:addCartDetailsRequest" name="addCartDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addCartDetailsResponse" name="addCartDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertPickupDetails">
+
+         <wsdl:input message="impl:insertPickupDetailsRequest" name="insertPickupDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertPickupDetailsResponse" name="insertPickupDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addSubscriptionDetails">
+
+         <wsdl:input message="impl:addSubscriptionDetailsRequest" name="addSubscriptionDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addSubscriptionDetailsResponse" name="addSubscriptionDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CallServiceSoapBinding" type="impl:CallService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="main">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="mainRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="mainResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="hello">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="helloRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="helloResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signUp">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signUpRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signUpResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ajaxCall">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ajaxCallRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ajaxCallResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="fetchPickupDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="fetchPickupDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="fetchPickupDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCartDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addCartDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addCartDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertPickupDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertPickupDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertPickupDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addSubscriptionDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addSubscriptionDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addSubscriptionDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CallServiceService">
+
+      <wsdl:port binding="impl:CallServiceSoapBinding" name="CallService">
+
+         <wsdlsoap:address location="http://localhost:8080/WebServiceTest/services/CallService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

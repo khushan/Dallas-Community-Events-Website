@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webTest" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webTest" xmlns:intf="http://webTest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webTest" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="decrypt">
+    <complexType>
+     <sequence>
+      <element name="strToDecrypt" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="decryptResponse">
+    <complexType>
+     <sequence>
+      <element name="decryptReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="encrypt">
+    <complexType>
+     <sequence>
+      <element name="strToEncrypt" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="encryptResponse">
+    <complexType>
+     <sequence>
+      <element name="encryptReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="acceptRequest">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="address" type="xsd:string"/>
+      <element name="contact" type="xsd:string"/>
+      <element name="email" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="acceptRequestResponse">
+    <complexType>
+     <sequence>
+      <element name="acceptRequestReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="encryptResponse">
+
+      <wsdl:part element="impl:encryptResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="acceptRequestRequest">
+
+      <wsdl:part element="impl:acceptRequest" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="decryptResponse">
+
+      <wsdl:part element="impl:decryptResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="decryptRequest">
+
+      <wsdl:part element="impl:decrypt" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="acceptRequestResponse">
+
+      <wsdl:part element="impl:acceptRequestResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="encryptRequest">
+
+      <wsdl:part element="impl:encrypt" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="sendRequest">
+
+      <wsdl:operation name="decrypt">
+
+         <wsdl:input message="impl:decryptRequest" name="decryptRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:decryptResponse" name="decryptResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="encrypt">
+
+         <wsdl:input message="impl:encryptRequest" name="encryptRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:encryptResponse" name="encryptResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acceptRequest">
+
+         <wsdl:input message="impl:acceptRequestRequest" name="acceptRequestRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:acceptRequestResponse" name="acceptRequestResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="sendRequestSoapBinding" type="impl:sendRequest">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="decrypt">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="decryptRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="decryptResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="encrypt">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="encryptRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="encryptResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acceptRequest">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="acceptRequestRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="acceptRequestResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="sendRequestService">
+
+      <wsdl:port binding="impl:sendRequestSoapBinding" name="sendRequest">
+
+         <wsdlsoap:address location="http://localhost:8080/WebServiceTest/services/sendRequest"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
